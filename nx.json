@@ -12,9 +12,15 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "N2QzN2E2YmYtNGM2MS00N2Y4LWExMTMtMTUxNjBjNDcwMmM3fHJlYWQtd3JpdGU="
       }
     }
   },
@@ -32,7 +38,9 @@
     },
     "dot-data-ng-nx-cloud-e2e": {
       "tags": [],
-      "implicitDependencies": ["dot-data-ng-nx-cloud"]
+      "implicitDependencies": [
+        "dot-data-ng-nx-cloud"
+      ]
     }
   }
 }
