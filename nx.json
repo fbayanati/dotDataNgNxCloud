@@ -1,0 +1,38 @@
+{
+  "npmScope": "dot-data",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "dot-data-ng-nx-cloud": {
+      "tags": []
+    },
+    "dot-data-ng-nx-cloud-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dot-data-ng-nx-cloud"]
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "projects": {
+    "dot-data-ng-nx-cloud": {
+      "projectType": "application",
+      "root": "apps/dot-data-ng-nx-cloud",
+      "sourceRoot": "apps/dot-data-ng-nx-cloud/src",
+      "prefix": "dot-data",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/dot-data-ng-nx-cloud",
+            "index": "apps/dot-data-ng-nx-cloud/src/index.html",
+            "main": "apps/dot-data-ng-nx-cloud/src/main.ts",
+            "polyfills": "apps/dot-data-ng-nx-cloud/src/polyfills.ts",
+            "tsConfig": "apps/dot-data-ng-nx-cloud/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/dot-data-ng-nx-cloud/src/favicon.ico",
+              "apps/dot-data-ng-nx-cloud/src/assets"
+            ],
+            "styles": ["apps/dot-data-ng-nx-cloud/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/dot-data-ng-nx-cloud/src/environments/environment.ts",
+                  "with": "apps/dot-data-ng-nx-cloud/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "dot-data-ng-nx-cloud:build:production"
+            },
+            "development": {
+              "browserTarget": "dot-data-ng-nx-cloud:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dot-data-ng-nx-cloud:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/dot-data-ng-nx-cloud/src/**/*.ts",
+              "apps/dot-data-ng-nx-cloud/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dot-data-ng-nx-cloud"],
+          "options": {
+            "jestConfig": "apps/dot-data-ng-nx-cloud/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dot-data-ng-nx-cloud-e2e": {
+      "root": "apps/dot-data-ng-nx-cloud-e2e",
+      "sourceRoot": "apps/dot-data-ng-nx-cloud-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dot-data-ng-nx-cloud-e2e/cypress.json",
+            "devServerTarget": "dot-data-ng-nx-cloud:serve:development",
+            "tsConfig": "apps/dot-data-ng-nx-cloud-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dot-data-ng-nx-cloud:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/dot-data-ng-nx-cloud-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "dot-data-ng-nx-cloud"
+}
