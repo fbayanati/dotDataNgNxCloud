@@ -8,8 +8,8 @@ export class DotScaleDirective {
 
   @HostListener('mouseover')
   public ddMouseOver(): void {
-    this.element.nativeElement.style.transition = 'all .3s';
-    this.element.nativeElement.style.transform = 'scale(1.25)';
+    this.element.nativeElement.style.transition = 'all .5s';
+    this.element.nativeElement.style.transform = 'scale(1.5)';
   }
 
   @HostListener('mouseout')
