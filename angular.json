@@ -120,6 +120,47 @@
           }
         }
       }
+    },
+    "dot-scale": {
+      "projectType": "library",
+      "root": "libs/dot-scale",
+      "sourceRoot": "libs/dot-scale/src",
+      "prefix": "dot-data",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/dot-scale"],
+          "options": {
+            "project": "libs/dot-scale/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/dot-scale/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/dot-scale/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dot-scale"],
+          "options": {
+            "jestConfig": "libs/dot-scale/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dot-scale/src/**/*.ts",
+              "libs/dot-scale/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
